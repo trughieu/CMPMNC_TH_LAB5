@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QLNSModelStoreContainer" CdmEntityContainer="QLNSEntities1">
+    <EntitySetMapping Name="Departments">
+      <EntityTypeMapping TypeName="QLNSModel.Department">
+        <MappingFragment StoreEntitySet="Department">
+          <ScalarProperty Name="Department1" ColumnName="Department" />
+          <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staffs">
+      <EntityTypeMapping TypeName="QLNSModel.Staff">
+        <MappingFragment StoreEntitySet="Staff">
+          <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+          <ScalarProperty Name="StaffName" ColumnName="StaffName" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="StaffMail" ColumnName="StaffMail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

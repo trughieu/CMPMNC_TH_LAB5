@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLNSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="Department1" />
+    </Key>
+    <Property Name="Department1" Type="Int32" Nullable="false" />
+    <Property Name="DepartmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Staffs" Relationship="Self.FK__Staff__Departmen__267ABA7A" FromRole="Department" ToRole="Staff" />
+  </EntityType>
+  <EntityType Name="Staff">
+    <Key>
+      <PropertyRef Name="StaffId" />
+    </Key>
+    <Property Name="StaffId" Type="Int32" Nullable="false" />
+    <Property Name="StaffName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Department" Type="Int32" />
+    <Property Name="StaffMail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Department1" Relationship="Self.FK__Staff__Departmen__267ABA7A" FromRole="Staff" ToRole="Department" />
+  </EntityType>
+  <Association Name="FK__Staff__Departmen__267ABA7A">
+    <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+    <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="Department1" />
+      </Principal>
+      <Dependent Role="Staff">
+        <PropertyRef Name="Department" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLNSEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Departments" EntityType="Self.Department" />
+    <EntitySet Name="Staffs" EntityType="Self.Staff" />
+    <AssociationSet Name="FK__Staff__Departmen__267ABA7A" Association="Self.FK__Staff__Departmen__267ABA7A">
+      <End Role="Department" EntitySet="Departments" />
+      <End Role="Staff" EntitySet="Staffs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

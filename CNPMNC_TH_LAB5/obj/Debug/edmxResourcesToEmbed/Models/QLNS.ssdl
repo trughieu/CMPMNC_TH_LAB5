@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLNSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="Department" />
+    </Key>
+    <Property Name="Department" Type="int" Nullable="false" />
+    <Property Name="DepartmentName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Staff">
+    <Key>
+      <PropertyRef Name="StaffId" />
+    </Key>
+    <Property Name="StaffId" Type="int" Nullable="false" />
+    <Property Name="StaffName" Type="varchar" MaxLength="50" />
+    <Property Name="Department" Type="int" />
+    <Property Name="StaffMail" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__Staff__Departmen__267ABA7A">
+    <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+    <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="Department" />
+      </Principal>
+      <Dependent Role="Staff">
+        <PropertyRef Name="Department" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLNSModelStoreContainer">
+    <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Staff__Departmen__267ABA7A" Association="Self.FK__Staff__Departmen__267ABA7A">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="Staff" EntitySet="Staff" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
